@@ -16,6 +16,8 @@ Section: Classification and Regression Using Supervised Learning
 
 **Label encoding**
 
+**Logistic regression classifier**
+
 
 ## Refresher math
 
