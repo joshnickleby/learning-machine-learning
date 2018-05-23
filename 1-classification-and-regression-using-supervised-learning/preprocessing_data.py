@@ -26,7 +26,7 @@ print("Mean =", input_data.mean(axis=0))
 print("Std dev =", input_data.std(axis=0))
 
 
-# TODO: Watdis
+# TODO: How is preprocessing scaling it?
 # Remove mean - It remains useful to remove the mean from our feature vector so that each feature has a basis around
 #               zero effectively removing bias.
 data_scaled = preprocessing.scale(input_data)
@@ -36,7 +36,7 @@ print("Mean =", data_scaled.mean(axis=0))
 print("Std dev =", data_scaled.std(axis=0))
 
 
-# TODO: Watdis
+# TODO: How is preprocessing figuring out the min max?
 # Min max scaling - Basically reformats the original data so that they are between 0 and 1 respectively to their values
 #                   within the given set
 data_scalar_minmax = preprocessing.MinMaxScaler(feature_range=(0,1))
@@ -45,7 +45,7 @@ data_scaled_minmax = data_scalar_minmax.fit_transform(input_data)
 print("\nMin max scaled data:\n", data_scaled_minmax)
 
 
-# TODO: Watdis
+# TODO: How is preprocessing normalizing it?
 # Normalize data
 data_normalized_l1 = preprocessing.normalize(input_data, norm='l1')
 data_normalized_l2 = preprocessing.normalize(input_data, norm='l2')
