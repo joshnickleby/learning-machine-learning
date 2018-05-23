@@ -5,7 +5,7 @@ Left off: Naive Bayes classifier
 
 ## Table of Contents
 
-### § 1 - [Classification and Regression using Supervised Learning](#/tree/master/1-classification-and-regression-using-supervised-learning)
+### § 1 - [Classification and Regression using Supervised Learning](https://github.com/joshnickleby/learning-machine-learning/tree/master/1-classification-and-regression-using-supervised-learning)
 
 
 ## TO LEARN
