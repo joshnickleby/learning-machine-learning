@@ -42,3 +42,9 @@ the outliers.
 
 
 ####Sigmoid Curve
+
+
+
+
+####Additional
+[reference for data/clases](https://github.com/PacktPublishing/Artificial-Intelligence-with-Python)

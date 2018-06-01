@@ -6,15 +6,28 @@ Section: Classification and Regression Using Supervised Learning
 
 ## Important terms
 
-**Preprocessing**
-
 **Binarization**
+
+**Label encoding**
 
 **Mean removal**
 
-**Scaling**
+**Naïve Bayes**
 
-**Label encoding**
+A technique to build classifiers with [Bayes theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem). The theorem
+describes the probability of an event occurring based on different conditions relating to the event. The naïve part
+is based on the independence assumption, which states that the value of any given feature will remain independent
+of the value of any other feature.
+
+_Example_
+
+> We may classify a living tree as having bark, branches, leaves. The classifier then considers each feature
+> independently and aggregates it all as a probability that we can classify it as a living tree (maybe vs a dead one).
+
+
+**Preprocessing**
+
+**Scaling**
 
 **Logistic regression classifier**
 
