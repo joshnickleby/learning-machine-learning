@@ -6,7 +6,7 @@ from sklearn import cross_validation
 from utils.utilities import visualize_classifier
 
 
-# Convience methods
+# Convience methods (train = training data)
 def trainClassifier(xTrain, yTrain, xTest):
     # Create classifier
     classifier = GaussianNB()
@@ -30,13 +30,15 @@ def visualize(classifier, yTest, yTestPrediction, xTest, descriptor):
 
 
 def checkValues(classifier, x, y, scoring):
-    num_folds = 3
-    values = cross_validation.cross_val_score(classifier, x, y, scoring=scoring, cv=num_folds)
+    numFolds = 3
+    values = cross_validation.cross_val_score(classifier, x, y, scoring=scoring, cv=numFolds)
 
     label = scoring.split("_")[0].capitalize()
 
     print(f'{label}: {str(round(100 * values.mean(), 2))}%')
     return values
+
+
 
 
 # Load data from input file
@@ -62,7 +64,7 @@ newClassifier, yTestPrediction = trainClassifier(xTrain, yTrain, xTest)
 
 
 # Compute accuracy of the classifier
-visualize(newClassifier, yTest, yTestPrediction, xTest, "the new")
+visualize(newClassifier, yTest, yTestPrediction, xTest, 'the new')
 
 
 # Check accuracy, precision, recall, and f1
