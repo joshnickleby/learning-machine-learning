@@ -6,63 +6,65 @@ from sklearn import cross_validation
 from utils.utilities import visualize_classifier
 
 
-# Input file containing data
-input_file = 'data_multivar_nb.txt'
+# Convience methods
+def trainClassifier(xTrain, yTrain, xTest):
+    # Create classifier
+    classifier = GaussianNB()
+
+    # Train the classifier
+    classifier.fit(xTrain, yTrain)
+
+    # Predict the values for training data
+    yPrediction = classifier.predict(xTest)
+
+    return classifier, yPrediction
+
+
+def visualize(classifier, yTest, yTestPrediction, xTest, descriptor):
+    # Compute accuracy
+    accuracy = 100.0 * (yTest == yTestPrediction).sum() / xTest.shape[0]
+    print(f'Accuracy of {descriptor} classifier = {round(accuracy, 2)}%')
+
+    # Visualize the performance of the classifier
+    visualize_classifier(classifier, xTest, yTest)
+
+
+def checkValues(classifier, x, y, scoring):
+    num_folds = 3
+    values = cross_validation.cross_val_score(classifier, x, y, scoring=scoring, cv=num_folds)
+
+    label = scoring.split("_")[0].capitalize()
+
+    print(f'{label}: {str(round(100 * values.mean(), 2))}%')
+    return values
 
 
 # Load data from input file
-data = np.loadtxt(input_file, delimiter=",")
-X, y = data[:, :-1], data[:, -1]
+inputFile = 'data_multivar_nb.txt'
+data = np.loadtxt(inputFile, delimiter=",")
+x, y = data[:, :-1], data[:, -1]
 
 
-# Create Naive Bayes classifier
-classifier = GaussianNB()
-
-
-# Train the classifier
-classifier.fit(X, y)
-
-
-# Predict the values for training data
-y_pred = classifier.predict(X)
+# Train a Naive Bayes classifier
+classifier, yPrediction = trainClassifier(x, y, x)
 
 
 # Compute accuracy
-accuracy = 100.0 * (y == y_pred).sum() / X.shape[0]
-print("Accuracy of Naive Bayes classifier =", round(accuracy, 2), "%")
-
-
-# Visualize the performance of the classifier
-visualize_classifier(classifier, X, y)
+visualize(classifier, y, yPrediction, x, 'a Naive Bayes')
 
 
 # Split data into training and test data
-X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2, random_state=3)
-classifier_new = GaussianNB()
-classifier_new.fit(X_train, y_train)
-y_test_pred = classifier_new.predict(X_test)
+xTrain, xTest, yTrain, yTest = cross_validation.train_test_split(x, y, test_size=0.2, random_state=3)
+
+
+# Train the new classifier
+newClassifier, yTestPrediction = trainClassifier(xTrain, yTrain, xTest)
 
 
 # Compute accuracy of the classifier
-accuracy = 100.0 * (y_test == y_test_pred).sum() / X_test.shape[0]
-print("Accuracy of the new classifier =", round(accuracy, 2), "%")
+visualize(newClassifier, yTest, yTestPrediction, xTest, "the new")
 
 
-# Visualize the performance of the classifier
-visualize_classifier(classifier_new, X_test, y_test)
-
-
-# Check accuracy, precision, and recall
-num_folds = 3
-
-accuracy_values = cross_validation.cross_val_score(classifier, X, y, scoring='accuracy', cv=num_folds)
-print("Accuracy: " + str(round(100*accuracy_values.mean(), 2)) + "%")
-
-precision_values = cross_validation.cross_val_score(classifier, X, y, scoring='precision_weighted', cv=num_folds)
-print("Precision: " + str(round(100*precision_values.mean(), 2)) + "%")
-
-recall_values = cross_validation.cross_val_score(classifier, X, y, scoring='recall_weighted', cv=num_folds)
-print("Recall: " + str(round(100*recall_values.mean(), 2)) + "%")
-
-f1_values = cross_validation.cross_val_score(classifier, X, y, scoring='f1_weighted', cv=num_folds)
-print("F1: " + str(round(100*f1_values.mean(), 2)) + "%")
+# Check accuracy, precision, recall, and f1
+tests = ['accuracy', 'precision_weighted', 'recall_weighted', 'f1_weighted']
+testResults = [checkValues(classifier, x, y, test) for test in tests]
