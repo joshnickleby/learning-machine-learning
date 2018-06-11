@@ -1,8 +1,6 @@
 import numpy as np
 from sklearn import linear_model
-import matplotlib.pyplot as plt
-
-from utils.utilities import visualize_classifier
+from utils.utilities import visualizeClassifier
 
 # Define same input data
 X = np.array([
@@ -35,4 +33,4 @@ classifier.fit(X, y)
 
 
 # Visualize the performance of the classifier - see utils/utilities.py
-visualize_classifier(classifier, X, y)
+visualizeClassifier(classifier, X, y)

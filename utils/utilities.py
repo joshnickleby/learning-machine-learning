@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 
 DEFAULT_LAMBDA = lambda item: item;
 
-
 def getMinMaxByPosition(set, position=0, wrapperFn=DEFAULT_LAMBDA):
     subset = set[:, position]
     return wrapperFn(subset.min() - 1.0), wrapperFn(subset.max() + 1.0)
@@ -20,7 +19,7 @@ def getMinMaxFromSet(set, wrapperFn=DEFAULT_LAMBDA):
 
 
 # todo: WTF IS THIS DOING - FIND OUT - comments are not my own
-def visualize_classifier(classifier, x, y, title=''):
+def visualizeClassifier(classifier, x, y, title=''):
     # Define the minimum and maximum values for x and y that will be used in the mesh grid
     xMin, xMax, yMin, yMax = getMinMaxFromSet(x)
 

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from sklearn.naive_bayes import GaussianNB
 from sklearn import cross_validation
 
-from utils.utilities import visualize_classifier
+from utils.utilities import visualizeClassifier
 
 
 # Convience methods (train = training data)
@@ -26,7 +26,7 @@ def visualize(classifier, yTest, yTestPrediction, xTest, descriptor):
     print(f'Accuracy of {descriptor} classifier = {round(accuracy, 2)}%')
 
     # Visualize the performance of the classifier
-    visualize_classifier(classifier, xTest, yTest)
+    visualizeClassifier(classifier, xTest, yTest)
 
 
 def checkValues(classifier, x, y, scoring):
