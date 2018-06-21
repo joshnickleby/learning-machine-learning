@@ -31,6 +31,19 @@ _Example_
 
 **Logistic regression classifier**
 
+**[Confusion matrix](https://en.wikipedia.org/wiki/Confusion_matrix)**
+
+A figure or a table used to describe the performance of a classifier. It is usually determined from a test dataset
+which has a known ground truth (eg ??). The matrix compares each class with the others to determine how many
+samples the classifier has misclassified.
+
+Binary classification confusion matrix example (output either equals 0 or 1):
+
+* **True positives**: Samples which we predicted 1 for the output and the ground truth equals 1.
+* **True negatives**: Samples which we predicted 0 for the output and the ground truth equals 0.
+* **False positives**: Samples which we predicted 1 for the output and the ground truth equals 0. _(Type I error)_
+* **False negatives**: Samples which we predicted 0 for the output and the ground truth equals 1. _(Type II error)_
+
 
 ## Refresher math
 
