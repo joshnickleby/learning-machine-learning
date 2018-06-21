@@ -4,6 +4,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn import cross_validation
 
 from utils.utilities import visualizeClassifier
+from utils.list import List
 
 
 # Convience methods (train = training data)
@@ -68,5 +69,4 @@ visualize(newClassifier, yTest, yTestPrediction, xTest, 'the new')
 
 
 # Check accuracy, precision, recall, and f1
-tests = ['accuracy', 'precision_weighted', 'recall_weighted', 'f1_weighted']
-testResults = [checkValues(classifier, x, y, test) for test in tests]
+List('accuracy', 'precision_weighted', 'recall_weighted', 'f1_weighted').map(lambda item : checkValues(classifier, x, y, item))

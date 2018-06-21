@@ -15,7 +15,8 @@ def getMinMaxFromSet(set, wrapperFn=DEFAULT_LAMBDA):
     yMin, yMax = getMinMaxByPosition(set, 1, wrapperFn=wrapperFn)
     return xMin, xMax, yMin, yMax
 
-
+def setLimit(values, fn):
+    fn(values.min(), values.max())
 
 
 # todo: WTF IS THIS DOING - FIND OUT - comments are not my own
@@ -47,9 +48,13 @@ def visualizeClassifier(classifier, x, y, title=''):
     # Overlay the training points on the plot
     plt.scatter(x[:, 0], x[:, 1], c=y, s=75, edgecolors='black', linewidth=1, cmap=plt.cm.Paired)
 
+# TODO: Figure this out
     # Specify the boundaries of the plot
-    plt.xlim(xValues.min(), xValues.max())
-    plt.ylim(yValues.min(), yValues.max())
+    # plt.xlim(xValues.min(), xValues.max())
+    # plt.ylim(yValues.min(), yValues.max())
+
+    setLimit(plt.xlim, xValues)
+    setLimit(plt.ylim, yValues)
 
     makeInt = lambda item : int(item)
 
