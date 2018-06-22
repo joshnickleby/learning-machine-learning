@@ -44,6 +44,9 @@ Binary classification confusion matrix example (output either equals 0 or 1):
 * **False positives**: Samples which we predicted 1 for the output and the ground truth equals 0. _(Type I error)_
 * **False negatives**: Samples which we predicted 0 for the output and the ground truth equals 1. _(Type II error)_
 
+**Support Vector Machine (SVM)**
+
+A classifier that we define using a separate hyperplane between the classes.
 
 ## Refresher math
 
